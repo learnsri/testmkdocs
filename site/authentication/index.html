@@ -1,0 +1,649 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Authentication - Moodle as a Service Test2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-set-up-azure-ad-application-in-microsoft-365" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Moodle as a Service Test2" class="md-header__button md-logo" aria-label="Moodle as a Service Test2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Moodle as a Service Test2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Moodle as a Service Test2" class="md-nav__button md-logo" aria-label="Moodle as a Service Test2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Moodle as a Service Test2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Assignment-activity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment Activity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Alpine-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpine Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attendance-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    attendance plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-set-up-azure-ad-application-in-microsoft-365" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Set Up Azure AD Application in Microsoft 365
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-configure-moodle-for-o365-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure Moodle for O365 Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-test-microsoft-365-authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Test Microsoft 365 Authentication
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1> Mirosoft O365  </h1>
+<p>To add Microsoft 365 (O365) authentication to Moodle 4.3, you can use OAuth 2 authentication to allow users to log in using their Microsoft accounts. This involves configuring an Azure AD application and setting up Moodle to use it.</p>
+<h3 id="step-1-set-up-azure-ad-application-in-microsoft-365">Step 1: Set Up Azure AD Application in Microsoft 365</h3>
+<ol>
+<li><strong>Access Azure Active Directory:</strong></li>
+<li>Go to the <a href="https://portal.azure.com/">Azure portal</a>.</li>
+<li>Sign in with your Microsoft 365 administrator account.</li>
+<li>Navigate to <code>Azure Active Directory</code> &gt; <code>App registrations [1]</code>.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Azure-01.png" style="max-width: 100%;width: 100%;"> </p>
+<ol>
+<li><strong>Register a New Application:</strong></li>
+<li>Click on <code>New registration</code>.</li>
+<li>Enter a name for your application <a href="e.g.," title="Moodle O365 Authentication">2</a>.</li>
+<li>Choose <code>Accounts in this organizational directory only</code> or <code>Accounts in any organizational directory</code>[3] depending on your user base.</li>
+<li>Under <code>Redirect URI</code>, [4] select <code>Web</code> and enter the following URI:
+     <code>https://yourmoodleurl.com/admin/oauth2callback.php</code>
+     Replace <code>yourmoodleurl.com</code> with your actual Moodle site URL.</li>
+<li>
+<p>Click <code>Register</code> [5].</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-02.png" style="max-width: 60%;width: 100%;"> </p>
+</li>
+<li>
+<p><strong>Configure API Permissions:</strong></p>
+</li>
+<li>After the app is created, go to <code>API permissions</code>[6].</li>
+<li>Click on <code>Add a permission</code>[7], select <code>Microsoft Graph</code>,[8] and then choose <code>Delegated permissions</code>[9].</li>
+<li>Add the following permissions [10]:<ul>
+<li><code>openid</code></li>
+<li><code>profile</code></li>
+<li><code>email</code></li>
+<li><code>offline_access</code></li>
+</ul>
+</li>
+<li>Click <code>Add permissions</code>[11].</li>
+<li>Grant admin consent for your organization.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-03.png" style="max-width: 80%;width: 90%;"> 
+<img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-04.png" style="max-width: 80%;width: 90%;"> </p>
+<ol>
+<li><strong>Create Client Secret:</strong></li>
+<li>Go to <code>Certificates &amp; secrets</code>[12].</li>
+<li>Click on <code>New client secret</code>[13], provide a description, and set an expiration period.</li>
+<li>After creating the client secret, copy the value immediately;[14] you will need this for Moodle.</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-05.png" style="max-width: 80%;width: 80%;"> </p>
+<h3 id="step-2-configure-moodle-for-o365-authentication">Step 2: Configure Moodle for O365 Authentication</h3>
+<ol>
+<li><strong>Login to Moodle as Admin:</strong></li>
+<li>
+<p>Log in to your Moodle site as an administrator.</p>
+</li>
+<li>
+<p><strong>Enable OAuth 2 Services:</strong></p>
+</li>
+<li>Go to <code>Site administration</code>[16] &gt; <code>Server</code>[17] &gt; <code>OAuth 2 services</code>[18].</li>
+<li>
+<p>Click on <code>Add a new service</code>.</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m05.1.png" style="max-width: 80%;width: 80%;"> 
+ <img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m06.png" style="max-width: 50%;width: 80%;"></p>
+</li>
+<li>
+<p><strong>Add Microsoft as an OAuth 2 Service:</strong></p>
+</li>
+<li>Name the service [19] (e.g., "Microsoft 365").</li>
+<li>In the <code>Client ID</code> [20] field, paste the <code>Application (client) ID</code> from Azure AD.
+     <img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m14.png" style="max-width: 50%;width: 80%;"> </li>
+<li>In the <code>Client secret</code>[21] field, paste the client secret you(Certification &amp; Secret &gt; Value) created in Azure AD.</li>
+<li><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m15.png" style="max-width: 50%;width: 80%;"> </li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m07.png" style="max-width: 50%;width: 80%;"> </p>
+<!--     
+   - Set the `Authorization endpoint URL` to:
+     ```
+     https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+     ```
+   - Set the `Token endpoint URL` to:
+     ```
+     https://login.microsoftonline.com/common/oauth2/v2.0/token
+     ```
+   - Set the `User info endpoint URL` to:
+     ```
+     https://graph.microsoft.com/oidc/userinfo
+     ```
+   - Set the `Resource endpoint URL` to:
+     ```
+     https://graph.microsoft.com/
+     ```
+   - Enable the service by checking the `Enabled` box.
+   - Click `Save changes`.  -->
+
+<p>### Additional Single Tenancy Configuration 
+   - Once the above steps have been completed, Moodle O365 Authentication click "Overview" if not already selected and choose "Endpoints"</p>
+<pre><code> &lt;img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m08.png" style="max-width: 50%;width: 80%;"&gt;
+</code></pre>
+<ul>
+<li>From the list of endpoints copy the OpenID Connect metadata document endpoint URL. It is only necessary to copy the portion up to and including "v2.0". In the example below, the copied URL would be, "https://login.microsoftonline.com/96e0421d-d572-4839-9c32-b8bc00cf250b/v2.0/". Note that it is important to include the trailing slash.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m09.png" style="max-width: 50%;width: 80%;"> </p>
+<ul>
+<li>
+<p>Now return to Moodle and in the newly created OAuth2 Microsoft service, paste the endpoint in the 'Service base URL' field.
+<img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m10.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Save your changes.</p>
+</li>
+<li>
+<p><strong>Enable Microsoft 365 Login:</strong></p>
+</li>
+<li>
+<p>Go to <code>Site administration</code> &gt; <code>Plugins</code> &gt; <code>Authentication</code> &gt; <code>Manage authentication</code>.</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m11.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Scroll down to <code>OAuth 2</code> and make sure it's enabled.</p>
+</li>
+<li>
+<p>Set <code>Microsoft 365</code> as an issuer.</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m12.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+</ul>
+<h3 id="step-3-test-microsoft-365-authentication">Step 3: Test Microsoft 365 Authentication</h3>
+<ol>
+<li><strong>Log Out:</strong></li>
+<li>
+<p>Log out of Moodle.</p>
+</li>
+<li>
+<p><strong>Test the Login:</strong></p>
+</li>
+<li>Go to the Moodle login page.</li>
+<li>
+<p>You should now see a "Login with Microsoft" button.</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/azure-m13.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Click on it and log in with a Microsoft 365 account to test.</p>
+</li>
+</ol>
+<p>https://docs.moodle.org/403/en/OAuth_2_Microsoft_service</p>
+<hr>
+
+<h1>Google authentication</h1>
+
+<p>Here is the corrected step-by-step guide:</p>
+<ol>
+<li><strong>Login with Google</strong><br />
+   Go to the Google Cloud Console:<br />
+<a href="https://console.cloud.google.com">https://console.cloud.google.com</a></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Google-1.png" style="max-width: 50%;width: 80%;"> </p>
+<ol>
+<li><strong>Create a New Project or Select an Existing Project [1]</strong>
+   <strong>if you select "New Project [2], add project name and [3] Click Create button [4]"</strong></li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Google-2.png" style="max-width: 50%;width: 80%;"> </p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Google-3.png" style="max-width: 50%;width: 80%;"> 
+  - Select your newly created project [5].</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Google-4.png" style="max-width: 50%;width: 80%;"> </p>
+<ol>
+<li><strong>Navigate to the API &amp; Services [7] &gt; Credentials section [8]</strong></li>
+</ol>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-5.png" style="max-width: 50%;width: 80%;"> </p>
+<ul>
+<li>Go to <strong>API &amp; Services</strong> and click on <strong>Credentials [9]</strong>.</li>
+</ul>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-6.png" style="max-width: 50%;width: 80%;"> </p>
+<ol>
+<li><strong>Create OAuth 2.0 Client ID [10]</strong>  </li>
+<li>
+<p>Click on <strong>Create Credentials</strong> and choose <strong>OAuth client ID</strong>.</p>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-7.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p><strong>Configure Consent Screen [12]</strong>
+<img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-8.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Select User Type <strong>External [13]</strong> and click the <strong>Create [14]</strong> button.</p>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-8.1.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Under <strong>Edit app registration &gt; OAuth Consent Screen &gt; App Information</strong>, fill in the required details.
+  <img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-9.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>In the <strong>Authorized domain [16]s</strong> section, add the domain of your Moodle site and provide the developer contact information.
+     <img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-10.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Click <strong>Save and Continue [17]</strong>.</p>
+</li>
+<li>
+<p><strong>Scopes Section</strong>  </p>
+</li>
+<li>Click <strong>Save and Continue</strong> in the <strong>Scopes</strong> section.</li>
+<li>
+<p>Then, click on the <strong>Back to Dashboard</strong> button.</p>
+</li>
+<li>
+<p><strong>Create OAuth Client ID</strong>  </p>
+</li>
+<li>
+<p>Go to <strong>Credentials[18]</strong> again, then click on <strong>Create Credentials[19]</strong> and choose <strong>OAuth Client ID[20]</strong>.</p>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-11.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+<li>
+<p>Select <strong>Web Application</strong> as the application type [18].
+<img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-10.1.png" style="max-width: 50%;width: 80%;"></p>
+</li>
+<li>
+<p><strong>Configure Authorized Redirect URLs[21]</strong>  </p>
+</li>
+<li>Add the following authorized redirect URL:<br />
+<code>https://your-moodle-site.com/admin/oauth2callback.php</code></li>
+</ol>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-12.png" style="max-width: 50%;width: 80%;"> </p>
+<ol>
+<li><strong>Click Create [22]</strong>  </li>
+<li>
+<p>Finally, click the <strong>Create</strong> button to generate your OAuth 2.0 Client ID.</p>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-13.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+</ol>
+<hr>
+<p>12 <strong>Configure Moodle for Google Cloud Console Authentication</strong></p>
+<p>i. <strong>Login to Moodle as Admin:</strong>
+   - Log in to your Moodle site as an administrator.</p>
+<pre><code>  &lt;img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-13.png" style="max-width: 50%;width: 80%;"&gt;
+</code></pre>
+<p>ii. <strong>Enable OAuth 2 Services:</strong>
+   - Go to <code>Site administration</code> &gt; <code>Server</code>[25] &gt; <code>OAuth 2 services</code>.
+   - Click on <code>Add a new service</code>[26].
+   - 
+        <img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-m01.png" style="max-width: 50%;width: 80%;"> </p>
+<p>iii . <strong>Add Google as an OAuth 2 Service:</strong>
+   - Name the service[27] (e.g., "Google").
+   - In the <code>Client ID</code>[28] field, paste the <code>Application (client) ID</code> from Google Cloud Console.
+   - In the <code>Client secret</code>[29] field, paste the client secret you created in Google Cloud Console.
+   - 
+     <img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-m02.png" style="max-width: 50%;width: 80%;"> </p>
+<p>iv . <strong>Enable the Google API in Moodle</strong>
+   - In the same “Manage authentication “page look for “OAuth 2” [30]in the list of authentication methods.
+   - Enable the OAuth 2 authentication plugin
+   - 
+     <img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-m03.png" style="max-width: 50%;width: 80%;"> </p>
+<ul>
+<li>After performing all the above step, you google will be coming on your loving page (as it is appearing in below screen)</li>
+<li>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/Google-m04.png" style="max-width: 50%;width: 80%;"> </p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,659 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+        <link rel="next" href="Assignment-activity/">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Moodle as a Service Test2</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.2a3383ac.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scenario" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Moodle as a Service Test2" class="md-header__button md-logo" aria-label="Moodle as a Service Test2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Moodle as a Service Test2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Moodle as a Service Test2" class="md-nav__button md-logo" aria-label="Moodle as a Service Test2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Moodle as a Service Test2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-add-a-custom-menu-in-moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Add a Custom Menu in Moodle:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-add-a-contact-email-by-customizing-the-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Add a Contact Email by Customizing the Header:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Assignment-activity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Assignment Activity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Alpine-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alpine Linux
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="attendance-plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    attendance plugin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-add-a-custom-menu-in-moodle" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Add a Custom Menu in Moodle:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scenario_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scenario:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-add-a-contact-email-by-customizing-the-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Add a Contact Email by Customizing the Header:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1>Customize Moodle Themes</h1>
+
+<h2> 01 -Basic Customization (Theme Selector and Settings):</h2>
+
+<ul>
+<li>Go to Administration &gt; Appearance &gt; Themes Setting / advanced Themes Settings.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/128-thems.png" alt="image" style="max-width: 100%;width: 500px;">
+ - Select your current theme.
+- Click on the Themes Settings .
+- Here, you can adjust various options like Designer mode, User themes, .</p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/129-thems.png" alt="image" style="max-width: 100%;width: 700px;">
+ - Save your changes to see the updated theme.</p>
+<h1>02 - Add Custom Menu </h1>
+
+<h3 id="scenario"><strong>Scenario:</strong></h3>
+<p>Assume you need to add a custom menu for <strong>BSc - IT</strong> courses.<br />
+- <strong>BSc - IT</strong> is the main menu.<br />
+- <strong>Semester 01</strong> and <strong>Semester 02</strong> are submenus.  </p>
+<hr />
+<h3 id="steps-to-add-a-custom-menu-in-moodle"><strong>Steps to Add a Custom Menu in Moodle:</strong></h3>
+<ol>
+<li><strong>Log in to Moodle:</strong>  </li>
+<li>
+<p>Access Moodle with administrative privileges using your credentials.  </p>
+</li>
+<li>
+<p><strong>Access Site Administration:</strong>  </p>
+</li>
+<li>
+<p>Navigate to <strong>"Site administration"</strong> in the top-right corner of the page.  </p>
+</li>
+<li>
+<p><strong>Navigate to Appearance Settings:</strong>  </p>
+</li>
+<li>Under <strong>"Site administration,"</strong> click on the <strong>"Appearance"</strong> tab.  </li>
+<li>
+<p>Select <strong>"Theme settings"</strong> or <strong>"Theme"</strong> (depending on your Moodle version).  </p>
+</li>
+<li>
+<p><strong>Configure Custom Menu Items:</strong>  </p>
+</li>
+<li>
+<p>In the <strong>"Theme settings"</strong> section, locate the <strong>"Custom menu items"</strong> box.  </p>
+</li>
+<li>
+<p><strong>Add Main Menu and Submenus:</strong>  </p>
+</li>
+<li>
+<p>Enter the menu structure using the following format:  </p>
+<p><code>BSc - IT|# 
+ - Semester 01|#
+ - Semester 02|#</code></p>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/130-menu.png" alt="image" style="max-width: 100%;width: 700px;">    </p>
+</li>
+<li>
+<p><strong>Save Changes:</strong>  </p>
+</li>
+<li>
+<p>Scroll down to the bottom of the page and click on the <strong>"Save changes"</strong> button to apply the new custom menu.  </p>
+</li>
+<li>
+<p><strong>Verify Custom Menu:</strong>  </p>
+</li>
+<li>Go to the main page of your Moodle site to check the newly added custom menu.  </li>
+<li>Hover over <strong>"BSc - IT"</strong> to see the submenus:  <ul>
+<li><strong>Semester 01</strong>  </li>
+<li><strong>Semester 02</strong>  </li>
+</ul>
+</li>
+<li>
+<p>Confirm that the subject links redirect correctly.  </p>
+</li>
+<li>
+<p>Save the changes:Click Save changes at the bottom of the page.</p>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/131-menu.png" alt="image" style="max-width: 100%;width: 500px;"> </p>
+<h3>03 - Customising the Header</h3>
+
+<h3 id="scenario_1"><strong>Scenario:</strong></h3>
+<p>Assume you need to add a <strong>contact email</strong> using the customization options available in the Moodle header.  </p>
+<hr />
+<h3 id="steps-to-add-a-contact-email-by-customizing-the-header"><strong>Steps to Add a Contact Email by Customizing the Header:</strong></h3>
+<ol>
+<li><strong>Navigate to Appearance Settings:</strong>  </li>
+<li>Under <strong>"Site administration,"</strong> click on the <strong>"Appearance"</strong> tab.  </li>
+<li>
+<p>Select <strong>"Theme settings"</strong> or <strong>"Theme"</strong> (depending on your Moodle version).  </p>
+</li>
+<li>
+<p><strong>Customize Header:</strong>  </p>
+</li>
+<li>
+<p>In the <strong>"Theme settings"</strong> section, locate the <strong>"Additional HTML"</strong> or <strong>"Custom header content"</strong> section.
+      <img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/132-header.png" alt="image" style="max-width: 100%;width: 500px;"> </p>
+</li>
+<li>
+<p>In the <strong>"Within HEAD"</strong> box, you can define <strong>HTML</strong>, <strong>CSS</strong>, or <strong>JavaScript</strong> to include on every page without modifying Moodle code files.  </p>
+</li>
+<li>
+<p><strong>Add Contact Email:</strong>  </p>
+</li>
+<li>Find the text box where you can add custom HTML for the header.  </li>
+<li>Enter the following HTML to add a contact email:  </li>
+</ol>
+<p>```html
+    <p style=”padding-top: 100px; text-align:center;color:black;”>For support please <a href="mailto:contact@university.edu">contact@university.edu</a></p></p>
+<p>```
+  <img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/133-header.png" alt="image" style="max-width: 100%;width: 800px;"> </p>
+<p>This code creates a <strong>div</strong> for potential styling and includes a <strong>mailto</strong> link for the contact email.  </p>
+<ol>
+<li><strong>Save Changes:</strong>  </li>
+<li>
+<p>Scroll down to the bottom of the page and click on the <strong>"Save changes"</strong> button to apply the custom header content.  </p>
+</li>
+<li>
+<p><strong>Verify Header Customization:</strong>  </p>
+</li>
+<li>Go to the <strong>main page</strong> of your Moodle site to check if the contact email appears in the header.  </li>
+<li>Click on the email link to ensure it opens your default email client correctly.  </li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/134-header.png" alt="image" style="max-width: 100%;width: 800px;"> </p>
+<hr />
+<h3>04 - Customising the Footer</h3>
+
+<ul>
+<li>As with header options in the section above, the administrator can add links, CSS or Java Script to the footer section of your page via Site administration &gt; Appearance &gt; Additional HTML</li>
+<li>This might be useful for adding Google Analytics, for example.</li>
+<li>Add your HTML/CSS to the 'Before BODY is closed' box.</li>
+</ul>
+<h3>05 - Change Theme</h3>
+
+<ul>
+<li>Log in as an administrator and navigate to Administration &gt; Site administration &gt; Appearance &gt; Themes &gt; Theme Selector.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Screenshot%202024-01-05%20at%2010.27.26.png" alt="image" style="max-width: 100%;width: 900px;"> </p>
+<ul>
+<li>In the "Appearance" section, you will see an option labeled "Themes". Click on it to see the available theme options.Change Theme: From the list of available themes, click on "Theme selector". You'll be presented with options to change the theme for different devices.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/Screenshot%202024-01-05%20at%2010.27.46.png" alt="image" style="max-width: 100%;width: 900px;"></p>
+<ul>
+<li>Choose a New Theme: For the device you want to change the theme for, click on the "Change theme" button next to the current theme.</li>
+<li>Select a New Theme: A list of available themes will appear. Choose the theme you want to apply by clicking the "Use theme" button next to it.</li>
+<li>Save Changes: Once you’ve selected a new theme, make sure to click "Save changes" at the bottom of the page.</li>
+</ul>
+<h3>06 - Add Custom Themes</h3>
+
+<ul>
+<li>Choose a Theme: Browse the official Moodle themes repository for free themes or search online for reputable Moodle theme vendors based on features, functionalities, and appearance.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/138-0%20thems.png" alt="image" style="max-width: 100%;width: 700px;"></p>
+<ul>
+<li>Download or Install the Theme: Once you've chosen your theme, download it as a zip file or use the provided installation method, such as clicking on an "Install" button.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/LEARN-LK/lms/master/img/137-thems.png" alt="image" style="max-width: 100%;width: 700px;"></p>
+<ul>
+<li>Using Moodle Plugin Installer: If your Moodle site allows it, you can upload the theme zip file directly through the Moodle interface. Navigate to Site administration &gt; Plugins &gt; Install plugins, and then drag and drop the zip file or use the file picker to select it.</li>
+</ul>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/139-1%20thems.png" alt="image" style="max-width: 100%;width: 700px;"></p>
+<ul>
+<li>
+<p>Set File Permissions (if using FTP): If you uploaded the theme via FTP, ensure the theme folder and its contents have the correct permissions for the web server to access them.</p>
+</li>
+<li>
+<p>Typically, you'll want to set the permissions to 755 (read/write/execute for owner, read/execute for group, read/execute for everyone).
+<br />
+<pre><code>sudo chown -R www-data:www-data /var/www/html/moodle/theme</code></pre>
+</p>
+</li>
+<li>
+<p>Activate the Theme in Moodle: Log in as an administrator on your Moodle site. Navigate to Site administration &gt; Appearance &gt; Themes &gt; Theme selector. You should see your uploaded theme listed. Click the "Use theme" button next to the theme to activate it.</p>
+</li>
+</ul>
+<p><img src="https://github.com/LEARN-LK/lms/blob/master/img/141-thems.png" alt="image" style="max-width: 100%;width: 500px;"></p>
+<ul>
+<li>Clear Theme Cache (optional): In some Moodle versions, you may need to clear the theme cache for the changes to take effect. You'll usually find a "Clear theme caches" button on the Theme selector page.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
